@@ -14,7 +14,7 @@ then
 	docker build -t "edude03/gitlab-runner-node" -rm=true .
 	
 	# run the container
-	docker run -i -t -e GITLAB_URL=git.melenion.com -e CI_SERVER_URL=<YOUR_SERVER_HERE> -e REGISTRATION_TOKEN=<YOUR_TOKEN_HERE> edude03/gitlab-runner-node
+	docker run -i -t -e GITLAB_URL=<YOUR_GITLAB_INSTANCE> -e CI_SERVER_URL=<YOUR_SERVER_HERE> -e REGISTRATION_TOKEN=<YOUR_TOKEN_HERE> -e DEPLOY_HOST=<WHERE_TO_DEPLOY_CODE> edude03/gitlab-runner-node
 	
 
-This should automatically boot the container, start the worker 
+This should automatically boot the container, start the worker and await a new test. If there are none, it will hang around until some tests come in, then it runs whem and deploys as necessary.
